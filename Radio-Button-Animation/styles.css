@@ -1,1 +1,117 @@
+/* Reset */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Radio Container */
+
+.radio-input {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: #000;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+/* Hide Radio Buttons */
+
+.radio-input input {
+    display: none;
+}
+
+/* Labels */
+
+.radio-input .label {
+    width: 90px;
+    height: 60px;
+    background: linear-gradient(to bottom, #333333, rgb(36, 35, 35));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all .2s ease;
+    border-top: 1px solid #4e4d4d;
+    box-shadow: 0 10px 25px rgba(0,0,0,.45);
+}
+
+/* Rounded Corners */
+
+.label:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.label:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Glow Layer */
+
+.label::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    transition: .2s;
+    background: linear-gradient(
+        to bottom,
+        transparent 10%,
+        transparent,
+        transparent 90%
+    );
+    z-index: -1;
+}
+
+/* Selected State */
+
+.label:has(input[type="radio"]:checked) {
+    background: linear-gradient(to bottom, #1d1d1d, #1d1d1d);
+    border-top: none;
+    box-shadow: none;
+}
+
+.label:has(input[type="radio"]:checked)::before {
+    background: linear-gradient(
+        to bottom,
+        transparent 10%,
+        rgba(202,226,253,.4),
+        transparent 90%
+    );
+}
+
+/* Text */
+
+.label .text {
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: .2s;
+    text-shadow:
+        -1px -1px 1px rgba(224,224,224,.1),
+         0 2px 3px rgba(0,0,0,.3);
+}
+
+/* Active Text */
+
+.label input[type="radio"]:checked + .text {
+    color: rgb(202,226,253);
+    text-shadow: 0 0 12px #cae2fd;
+}
