@@ -1,11 +1,3 @@
-<div align="center">
-
-<!-- ================= Banner ================= -->
-<!-- Replace with your banner image -->
-<img width="3919" height="3919" alt="Compressed" src="https://github.com/user-attachments/assets/b5a0f227-db6c-4ad4-bf73-11df6044f2eb" />
-
-
-
 
 # Web Tech Shorts
 
