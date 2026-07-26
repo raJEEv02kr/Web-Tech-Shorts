@@ -1,0 +1,628 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    gap: 28px;
+
+    background:
+        radial-gradient(circle at top left, #18274d 0%, transparent 40%),
+        radial-gradient(circle at bottom right, #31154d 0%, transparent 45%),
+        linear-gradient(135deg, #090b14, #0d1320, #090b14);
+}
+
+/* ================= CARD ================= */
+
+.card {
+    width: 380px;
+    height: 240px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: rgba(36, 49, 55, .35);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, .35),
+        inset 0 1px 1px rgba(255, 255, 255, .08);
+
+    transition: .45s;
+}
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(0, 229, 255, .28),
+            transparent 70%);
+
+    filter: blur(60px);
+
+    z-index: -2;
+
+    animation: floatGlow 8s ease-in-out infinite;
+}
+
+.card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(168, 85, 247, .18),
+            transparent 70%);
+
+    filter: blur(70px);
+
+    right: -80px;
+    bottom: -80px;
+
+    z-index: -2;
+
+    animation: floatGlow2 10s ease-in-out infinite;
+}
+
+.border {
+    position: absolute;
+    inset: 0;
+
+    border: 1px solid rgba(0, 229, 255, .55);
+
+    box-shadow:
+
+        0 0 12px rgba(0, 229, 255, .18),
+
+        inset 0 0 8px rgba(0, 229, 255, .15);
+
+    opacity: 0;
+
+    transform: rotate(10deg);
+
+    transition: .45s;
+}
+
+/* ================= CONTENT ================= */
+
+.content {
+
+    width: 100%;
+    height: 100%;
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    z-index: 2;
+
+    transition: .4s;
+}
+
+/* ================= BRAND ================= */
+
+.logo {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: visible;
+
+    position: relative;
+}
+
+.brand {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: .4s;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+}
+
+.brand h1 {
+
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+
+    letter-spacing: 2px;
+
+    background: linear-gradient(90deg,
+            #00E5FF,
+            #7CEFFF,
+            #00E5FF);
+
+    background-size: 250%;
+
+    color: transparent;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    animation: shine 5s linear infinite;
+}
+
+.brand h2 {
+
+    margin-top: 10px;
+
+    font-size: 18px;
+
+    letter-spacing: 12px;
+
+    color: #B56EFF;
+
+    text-shadow:
+
+        0 0 12px rgba(181, 110, 255, .35);
+
+    animation: pulse 3s ease infinite;
+}
+
+/* ================= USERNAME ================= */
+
+.logo-bottom-text {
+
+    color: #d7d7d7;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    transition: .45s;
+}
+
+/* ================= TAGLINE ================= */
+
+.bottom-text {
+
+    position: absolute;
+
+    bottom: 16px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    white-space: nowrap;
+
+    color: #00E5FF;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    transition: .45s;
+}
+
+
+
+/* ================= HOVER ================= */
+
+.card:hover {
+
+    transform:
+        translateY(-10px) scale(1.05);
+
+    box-shadow:
+
+        0 30px 60px rgba(0, 0, 0, .45),
+
+        0 0 30px rgba(0, 229, 255, .18),
+
+        0 0 50px rgba(168, 85, 247, .12);
+}
+
+.card:hover .border {
+
+    inset: 10px;
+
+    opacity: 1;
+
+    transform: rotate(0);
+}
+
+.card:hover .brand {
+
+    transform: scale(1.05);
+}
+
+.card:hover .logo-bottom-text {
+
+    opacity: 1;
+
+    letter-spacing: 3px;
+}
+
+.card:hover .bottom-text {
+
+    opacity: 1;
+
+    letter-spacing: 3px;
+}
+
+/* ================= ANIMATION ================= */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+            rgba(0, 229, 255, .25) 0%,
+            transparent 70%);
+
+    filter: blur(70px);
+
+    top: -80px;
+    left: -80px;
+
+    z-index: -1;
+
+    animation: floatGlow1 8s ease-in-out infinite;
+}
+
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+            rgba(168, 85, 247, .20) 0%,
+            transparent 70%);
+
+    filter: blur(80px);
+
+    bottom: -80px;
+    right: -80px;
+
+    z-index: -1;
+
+    animation: floatGlow2 10s ease-in-out infinite;
+}
+
+@keyframes floatGlow1 {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(35px, 20px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes floatGlow2 {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-30px, -25px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes shine {
+
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 250%;
+    }
+
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        opacity: .8;
+
+        text-shadow:
+            0 0 8px rgba(181, 110, 255, .25);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        text-shadow:
+            0 0 20px rgba(181, 110, 255, .65);
+
+    }
+
+}
+
+
+/* ================= Background Grid ================= */
+
+.background-grid {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+
+    mask-image:
+        radial-gradient(circle at center,
+            black 30%,
+            transparent 95%);
+
+    -webkit-mask-image:
+        radial-gradient(circle at center,
+            black 30%,
+            transparent 95%);
+
+    z-index: -20;
+
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(50px);
+    }
+
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    left: -150px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background: #00E5FF22;
+
+    filter: blur(120px);
+
+    z-index: -50;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    right: -150px;
+    bottom: -150px;
+
+    border-radius: 50%;
+
+    background: #A855F722;
+
+    filter: blur(140px);
+
+    z-index: -50;
+}
+
+/* ================= Follow Card ================= */
+.instagram-card {
+    width: 300px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 0 22px;
+
+    text-decoration: none;
+
+    color: white;
+
+    background: rgba(255, 255, 255, .05);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, .35),
+        inset 0 1px rgba(255, 255, 255, .08);
+
+    transition: .35s ease;
+}
+
+.instagram-icon {
+    width: 28px;
+    height: 28px;
+    color: #E1306C;
+    flex-shrink: 0;
+    transition: .35s;
+}
+
+.follow-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.follow-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.follow-username {
+    font-size: 12px;
+    color: #B0BEC5;
+    margin-top: 3px;
+}
+
+.follow-card {
+    padding-left: 50px;
+}
+
+.instagram-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(225, 48, 108, .45);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, .45),
+        0 0 20px rgba(225, 48, 108, .25);
+}
+
+.instagram-card:hover .instagram-icon {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.follow-card:hover {
+
+    transform:
+        translateY(-5px) scale(1.02);
+
+    box-shadow:
+
+        0 20px 40px rgba(0, 0, 0, .35),
+
+        0 0 25px rgba(225, 48, 108, .18);
+}
+
+.follow-card:hover svg {
+
+    transform:
+        rotate(-10deg) scale(1.15);
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -40%;
+
+    left: -25%;
+
+    width: 70%;
+
+    height: 220%;
+
+    transform: rotate(30deg);
+
+    background:
+        linear-gradient(to right,
+            transparent,
+            rgba(255, 255, 255, .08),
+            transparent);
+
+    pointer-events: none;
+}
